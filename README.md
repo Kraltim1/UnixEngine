@@ -10,6 +10,7 @@ To run UnixEngine simply copy the code below and add your code in the functions.
 ```c++
 
 #include "../engine/engine.h"
+using namespace std;
 
 // Function called when command is written in the console
 void command_written(string command);
