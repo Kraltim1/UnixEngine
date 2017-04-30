@@ -30,8 +30,9 @@ int main()
 Apps
 ====
 
-Launch Draw
+To launch Draw you need to compile the app and the engine and then launch it.
 
 ```
-make draw
+ > make draw
+ > ./draw
 ```
