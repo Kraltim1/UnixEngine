@@ -18,18 +18,18 @@ void add_command(string command, string *commands, int n)
 
 //******** Engine Functions ********
 
-Engine::Engine()
+UnixEngine::UnixEngine()
 {
     canvas = new Canvas();
     console = false;
 }
 
-Engine::~Engine()
+UnixEngine::~UnixEngine()
 {
     delete canvas;
 }
 
-void Engine::start(void (*frame)(Canvas *), void (*parse)(string))
+void UnixEngine::start(void (*frame)(Canvas *), void (*parse)(string))
 {
     int n = 0;
     string command = "";
@@ -56,7 +56,7 @@ void Engine::start(void (*frame)(Canvas *), void (*parse)(string))
     }
 }
 
-void Engine::set_canvas(int width, int height)
+void UnixEngine::set_canvas(int width, int height)
 {
     canvas->set_width(width);
     canvas->set_height(height);

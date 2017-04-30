@@ -106,7 +106,7 @@ void render_frame(Canvas *canvas)
 
 int main()
 {
-    Engine *engine = new Engine();
+    UnixEngine *engine = new UnixEngine();
     engine->set_canvas(120, 40);
     engine->start(render_frame, command_written);
     delete engine;

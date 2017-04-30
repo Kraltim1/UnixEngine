@@ -8,13 +8,13 @@
 #include <string>
 using namespace std;
 
-class Engine
+class UnixEngine
 {
 public:
 
     // Lifecycle
-    Engine();
-    ~Engine();
+    UnixEngine();
+    ~UnixEngine();
 
     // Functions
     void start(void (*frame)(Canvas *), void (*parse)(string));
