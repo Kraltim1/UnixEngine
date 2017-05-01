@@ -1,5 +1,6 @@
 
 #include "engine.h"
+#include <cstdlib>
 
 //******** Private Functions ********
 
