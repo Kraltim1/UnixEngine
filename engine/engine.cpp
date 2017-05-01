@@ -26,6 +26,7 @@ UnixEngine::UnixEngine()
 
 UnixEngine::~UnixEngine()
 {
+    system("clear");
     delete canvas;
 }
 

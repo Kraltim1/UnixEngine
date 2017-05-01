@@ -99,9 +99,11 @@ void command_written(string command)
 // Function called before the next frame is rendered
 void render_frame(Canvas *canvas)
 {
-    if (view)
+    if (view) {
         view->add_to(canvas);
-    delete view;
+        delete view;
+        view = 0;
+    }
 }
 
 int main()
