@@ -1,6 +1,8 @@
 
 #include "../engine/engine.h"
+#include <algorithm>
 using namespace std;
+
 
 View *view;
 

@@ -13,7 +13,7 @@ RM = rm -f
 all: fclean
 
 draw:
-	g++ $(SRCS) ./apps/draw.cpp -o draw
+	g++ $(SRCS) ./apps/draw.cpp -o draw -std=c++11
 
 clean:
 	$(RM) draw
