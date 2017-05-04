@@ -1,8 +1,11 @@
-
+#include <iostream>
 #include "../engine/engine.h"
 #include <algorithm>
-using namespace std;
+#include <sys/ioctl.h>
+#include <stdio.h>
+#include <unistd.h>
 
+using namespace std;
 
 View *view;
 
@@ -110,8 +113,10 @@ void render_frame(Canvas *canvas)
 
 int main()
 {
-    UnixEngine *engine = new UnixEngine();
-    engine->set_canvas(120, 40);
+	UnixEngine *engine = new UnixEngine();
+	struct winsize size;
+	ioctl(STDOUT_FILENO,TIOCGWINSZ,&size);
+	engine->set_canvas(size.ws_col, size.ws_row-3);
     engine->start(render_frame, command_written);
     delete engine;
     return 0;
