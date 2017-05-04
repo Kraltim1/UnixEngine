@@ -10,7 +10,7 @@ void add_command(string command, string *commands, int n)
         commands[n] = command;
     }
     else {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 9; i++) {
             commands[i] = commands[i + 1];
         }
         commands[9] = command;
@@ -22,7 +22,6 @@ void add_command(string command, string *commands, int n)
 UnixEngine::UnixEngine()
 {
     canvas = new Canvas();
-    console = false;
 }
 
 UnixEngine::~UnixEngine()

@@ -22,7 +22,6 @@ public:
 
     // Variables
     int fps;
-    bool console;
     Canvas *canvas;
 };
 
