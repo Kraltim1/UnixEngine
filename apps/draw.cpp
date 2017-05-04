@@ -2,10 +2,7 @@
 #include "../engine/engine.h"
 #include <algorithm>
 #include <sys/ioctl.h>
-#include <stdio.h>
 #include <unistd.h>
-
-using namespace std;
 
 View *view;
 
