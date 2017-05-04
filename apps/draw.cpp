@@ -112,10 +112,11 @@ void render_frame(Canvas *canvas)
 
 int main()
 {
+    struct winsize size;
+	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+
 	UnixEngine *engine = new UnixEngine();
-	struct winsize size;
-	ioctl(STDOUT_FILENO,TIOCGWINSZ,&size);
-	engine->set_canvas(size.ws_col, size.ws_row-3);
+	engine->set_canvas(size.ws_col, size.ws_row - 12);
     engine->start(render_frame, command_written);
     delete engine;
     return 0;

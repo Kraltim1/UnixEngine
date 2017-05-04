@@ -8,9 +8,9 @@ SRCS =	./engine/engine.cpp \
 
 RM = rm -f
 
-.PHONY: fclean all
+.PHONY: clean draw
 
-all: fclean
+all: draw
 
 draw:
 	g++ $(SRCS) ./apps/draw.cpp -o draw -std=c++11
@@ -18,7 +18,4 @@ draw:
 clean:
 	$(RM) draw
 
-fclean: clean
-	$(RM) draw
-
-re: fclean all
+re: clean all
