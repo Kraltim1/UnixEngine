@@ -94,6 +94,8 @@ Border color
  >  View(border_color:10)
 ```
 
+---
+
 To create a view you can combine any these properties in any order you want.
 
 ```
