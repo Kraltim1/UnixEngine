@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <sys/ioctl.h>
 #include <unistd.h>
+#include <thread>
+#include <time.h>
 
 View *view;
 
@@ -110,14 +112,33 @@ void render_frame(Canvas *canvas)
     }
 }
 
+//will need a better place
+int lastX;
+int lastY;
+bool running = true;
+
+void termSize(UnixEngine *ue) { //sets the canvas properties dimensions
+     while(running) {
+          usleep(1000 * 250); // 1/4 of a second
+          struct winsize size;
+          lastX = size.ws_row;
+          lastY = size.ws_col;
+          ioctl(STDOUT_FILENO,TIOCGWINSZ,&size);
+          if((lastX * lastY) != (size.ws_row * size.ws_col)) {
+               ue->set_canvas(size.ws_col, size.ws_row - 12);
+          }
+          //TODO: Add a function here that redraws the canvas
+     }
+}
+
 int main()
 {
-    struct winsize size;
-	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    UnixEngine *engine = new UnixEngine();
+    thread loop(termSize, engine);
 
-	UnixEngine *engine = new UnixEngine();
-	engine->set_canvas(size.ws_col, size.ws_row - 12);
     engine->start(render_frame, command_written);
+    running = false;
+    loop.join();
     delete engine;
     return 0;
 }
