@@ -13,7 +13,7 @@ RM = rm -f
 all: draw
 
 draw:
-	g++ $(SRCS) ./apps/draw.cpp -o draw -std=c++11
+	g++ $(SRCS) ./apps/draw.cpp -o draw -std=c++11 -pthread
 
 clean:
 	$(RM) draw
