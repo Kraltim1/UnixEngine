@@ -3,6 +3,7 @@
 
 View::View() : Canvas()
 {
+    // Set defaults on alloc
     x = 0;
     y = 0;
     border_width = 0;
@@ -42,6 +43,7 @@ void View::set_border_width(int m_border_width)
 
 void View::set_border_color(string color)
 {
+    // Set proper color based on function argument
     if (!color.compare("black"))
         border_color = "\033[30m";
     else if (!color.compare("red"))
@@ -66,20 +68,30 @@ void View::add_to(Canvas *canvas)
     int canvas_y;
     stringstream ss;
 
-    for (int i = 0; i < canvas->width * canvas->height; i++) {
-        canvas_x = i % canvas->width;
-        canvas_y = i / canvas->width;
+    // For loop which cicles through all of the pixels in the canvas
+    for (int i = 0; i < canvas->get_width() * canvas->get_height(); i++) {
 
+        // Get the corresponding coordinates in the canvas
+        canvas_x = i % canvas->get_width();
+        canvas_y = i / canvas->get_width();
+
+        // Only draw over pixels in the location of the view
         if (canvas_x >= x && canvas_x < x + width) {
             if (canvas_y >= y && canvas_y < y + height) {
-                if (canvas_x - x < border_width || x + width - canvas_x <= border_width)
+
+                // Filter out the borders and draw the corresponding pixels
+                if (canvas_x - x < border_width || x + width - canvas_x <= border_width) {
                     ss << border_color << border_style << "\033[0m";
+                }
                 else if (canvas_y - y < border_width || y + height - canvas_y <= border_width)
                     ss << border_color << border_style << "\033[0m";
-                else
+                else {
+                    // If not a border pixel, draw a body pixel
                     ss << background_color << style << "\033[0m";
+                }
 
-                canvas->pixels[i] = ss.str();
+                // Draw the pixel on the canvas
+                canvas->set_pixel(i, ss.str());
                 ss.str("");
                 ss.clear();
             }

@@ -46,9 +46,11 @@ public:
     void set_border_style(char m_border_style);
     void set_border_width(int m_border_width);
     void set_border_color(string color);
-    void add_to(Canvas *canvas);
+    virtual void add_to(Canvas *canvas);
 
-    // Variables
+protected:
+
+    // Properties
     int x;
     int y;
     char border_style;

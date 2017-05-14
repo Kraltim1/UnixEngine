@@ -3,6 +3,7 @@
 
 Canvas::Canvas()
 {
+    // Set defaults on alloc
     style = '.';
     background_color = "\033[37m";
 }
@@ -28,6 +29,7 @@ void Canvas::set_style(char m_style)
 
 void Canvas::set_background_color(string color)
 {
+    // Set proper color based on function argument
     if (!color.compare("black"))
         background_color = "\033[30m";
     else if (!color.compare("red"))
@@ -46,11 +48,29 @@ void Canvas::set_background_color(string color)
         background_color = "\033[37m";
 }
 
+void Canvas::set_pixel(int pixel, string value)
+{
+    // Set individual pixel data
+    pixels[pixel] = value;
+}
+
+int Canvas::get_width()
+{
+    return width;
+}
+
+int Canvas::get_height()
+{
+    return height;
+}
+
 void Canvas::pixelate()
 {
+    // Allocate the string of pixels used for the canvas
     stringstream ss;
     pixels = new string[width * height];
 
+    // Set each pixel in the string to default style and color
     for (int i = 0; i < width * height; i++) {
         ss << "\033[37m" << style << "\033[0m";
         pixels[i] = ss.str();
@@ -61,8 +81,11 @@ void Canvas::pixelate()
 
 void Canvas::draw()
 {
+    // Draw the canvas by printing out the pixels string
     for (int i = 0; i < width * height; i++) {
         cout << pixels[i];
+
+        // Add linebreaks to create width of canvas
         if (i % width == width - 1)
             cout << endl;
     }   

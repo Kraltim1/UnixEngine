@@ -62,7 +62,7 @@ void UnixEngine::add_command(string command, int n)
             commands[i] = commands[i + 1];
         }
 
-        // Add command to the of the list
+        // Add command to the end of the list
         commands[9] = command;
     }
 }
