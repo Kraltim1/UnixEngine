@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 using namespace std;
 
 class UnixEngine
@@ -20,9 +21,16 @@ public:
     void start(void (*frame)(Canvas *), void (*parse)(string));
     void set_canvas(int width, int height);
 
-    // Variables
-    int fps;
+private:
+
+    // Functions
+    void add_command(string command, int n);
+    void render(string *command);
+
+    // Properties
+    int n;
     Canvas *canvas;
+    string *commands;
 };
 
 #endif

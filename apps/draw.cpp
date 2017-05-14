@@ -112,33 +112,42 @@ void render_frame(Canvas *canvas)
     }
 }
 
-//will need a better place
-int lastX;
-int lastY;
-bool running = true;
+// //will need a better place
+// int lastX;
+// int lastY;
+// bool running = true;
 
-void termSize(UnixEngine *ue) { //sets the canvas properties dimensions
-     while(running) {
-          usleep(1000 * 250); // 1/4 of a second
-          struct winsize size;
-          lastX = size.ws_row;
-          lastY = size.ws_col;
-          ioctl(STDOUT_FILENO,TIOCGWINSZ,&size);
-          if((lastX * lastY) != (size.ws_row * size.ws_col)) {
-               ue->set_canvas(size.ws_col, size.ws_row - 12);
-          }
-          //TODO: Add a function here that redraws the canvas
-     }
-}
+// void termSize(UnixEngine *ue) { //sets the canvas properties dimensions
+//      while(running) {
+//           usleep(1000 * 2); // 1/400 of a second
+//           struct winsize size;
+//           lastX = size.ws_row;
+//           lastY = size.ws_col;
+//           ioctl(STDOUT_FILENO,TIOCGWINSZ,&size);
+//           if((lastX * lastY) != (size.ws_row * size.ws_col)) {
+//                ue->set_canvas(size.ws_col, size.ws_row - 12);
+//           }
+//           //TODO: Add a function here that redraws the canvas
+//      }
+// }
+
+// int main()
+// {
+//     UnixEngine *engine = new UnixEngine();
+//     thread loop(termSize, engine);
+
+//     engine->start(render_frame, command_written);
+//     running = false;
+//     loop.join();
+//     delete engine;
+//     return 0;
+// }
 
 int main()
 {
     UnixEngine *engine = new UnixEngine();
-    thread loop(termSize, engine);
-
+    engine->set_canvas(100, 30);
     engine->start(render_frame, command_written);
-    running = false;
-    loop.join();
     delete engine;
     return 0;
 }
