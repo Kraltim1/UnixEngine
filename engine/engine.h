@@ -12,7 +12,7 @@ using namespace std;
 class UnixEngine
 {
 public:
-
+	
     // Lifecycle
     UnixEngine();
     ~UnixEngine();
@@ -20,6 +20,11 @@ public:
     // Functions
     void start(void (*frame)(Canvas *), void (*parse)(string));
     void set_canvas(int width, int height);
+	
+	static const short commandHistory = 5;
+	int getCommandHistory() {
+		return commandHistory;
+	}
 
 private:
 
