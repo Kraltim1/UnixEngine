@@ -68,7 +68,7 @@ void View::add_to(Canvas *canvas)
     int canvas_y;
     stringstream ss;
 
-    // For loop which cicles through all of the pixels in the canvas
+    // For loop which cycles through all of the pixels in the canvas
     for (int i = 0; i < canvas->get_width() * canvas->get_height(); i++) {
 
         // Get the corresponding coordinates in the canvas
