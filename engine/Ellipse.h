@@ -1,10 +1,3 @@
-/*
- * Ellipse.h
- *
- *  Created on: May 18, 2017
- *      Author: pi
- */
-
 #ifndef ENGINE_ELLIPSE_H_
 #define ENGINE_ELLIPSE_H_
 
@@ -13,6 +6,9 @@
 class Ellipse: public View {
 public:
 	Ellipse();
+	bool checkFunction(int x,int y);
+	void add_to(Canvas *canvas);
+
 	virtual ~Ellipse();
 };
 

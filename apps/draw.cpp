@@ -105,6 +105,17 @@ void command_written(string command)
 // Function called before the next frame is rendered
 void render_frame(Canvas *canvas)
 {
+
+//
+//	Ellipse *test = new Ellipse();
+//	test->set_width(10);
+//	test->set_height(10);
+//	test->set_x(12);
+//	test->set_y(12);
+//	test->set_background_color("red");
+//	test->add_to(canvas);
+
+
     if (view) {
         view->add_to(canvas);
         delete view;
