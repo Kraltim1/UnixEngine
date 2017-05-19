@@ -54,6 +54,11 @@ void Canvas::set_pixel(int pixel, string value)
     pixels[pixel] = value;
 }
 
+string Canvas::get_pixel(int pixel) {
+	return pixels[pixel];
+}
+
+
 int Canvas::get_width()
 {
     return width;

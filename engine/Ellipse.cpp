@@ -1,29 +1,20 @@
 #include "Ellipse.h"
+#include <cmath>
 
 Ellipse::Ellipse() {
-	// TODO Auto-generated constructor stub
-	a = 0;
-	b = 0;
+	style = '#';
 }
 
 Ellipse::~Ellipse() {
-	// TODO Auto-generated destructor stub
+
 }
 
-bool Ellipse::checkFunction(int x,int y,int a,int b) {
-	if (x/a+y/b == 1) return 1;
+bool Ellipse::checkFunction(int x,int y) {
+	if (pow(x,2)/pow(width,2)+pow(y,2)/pow(height,2) <= 1) return 1;
 	return 0;
 }
 
-void Ellipse::setAValue(int m_a) {
-	a = m_a;
-}
-
-void Ellipse::setBValue(int m_b) {
-	b = m_b;
-}
-
-void Ellipse::plot(Canvas *canvas)
+void Ellipse::add_to(Canvas *canvas)
 {
     int canvas_x;
     int canvas_y;
@@ -41,8 +32,11 @@ void Ellipse::plot(Canvas *canvas)
             if (canvas_y >= y && canvas_y < y + height) {
 
                 // Draw the pixels on the curve
-                if (checkFunction(canvas_x,canvas_y,a,b)) {
+                if (checkFunction(canvas_x,canvas_y)) {
                     ss << background_color << style << "\033[0m";
+                }
+                else {
+                	ss << canvas->get_pixel(i);
                 }
 
                 // Draw the pixel on the canvas

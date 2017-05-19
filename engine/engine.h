@@ -3,6 +3,7 @@
 #define ENGINE_H
 
 #include "view.h"
+#include "Ellipse.h"
 
 #include <iostream>
 #include <string>
