@@ -2,9 +2,7 @@ NAME = UnixEngine
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS =	./engine/engine.cpp \
-		./engine/canvas.cpp \
-		./engine/view.cpp
+SRCS =	./engine/*.cpp
 
 RM = rm -f
 
