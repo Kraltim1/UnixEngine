@@ -1,19 +1,18 @@
 NAME = UnixEngine
 
-CFLAGS = -Wall -Wextra -Werror
-
 SRCS =	./engine/*.cpp
-
-RM = rm -f
 
 .PHONY: clean draw
 
 all: draw
 
 draw:
-	g++ $(SRCS) ./apps/draw.cpp -o draw -std=c++11 -pthread
+	-@ g++ $(SRCS) ./apps/draw.cpp -o draw -std=c++11 -pthread
+
+tests:
+	-@ sh run.sh
 
 clean:
-	$(RM) draw
+	-@ rm -f draw
 
 re: clean all

@@ -11,9 +11,7 @@ View::View() : Canvas()
     border_style = '*';
 }
 
-View::~View()
-{
-}
+View::~View() {}
 
 void View::set_x(int m_x)
 {
@@ -22,12 +20,6 @@ void View::set_x(int m_x)
 
 void View::set_y(int m_y)
 {
-    y = m_y;
-}
-
-void View::set_position(int m_x, int m_y)
-{
-    x = m_x;
     y = m_y;
 }
 
@@ -62,39 +54,30 @@ void View::set_border_color(string color)
         border_color = "\033[37m";
 }
 
-void View::add_to(Canvas *canvas)
+string View::draw(int canvas_x, int canvas_y)
 {
-    int canvas_x;
-    int canvas_y;
     stringstream ss;
 
-    // For loop which cycles through all of the pixels in the canvas
-    for (int i = 0; i < canvas->get_width() * canvas->get_height(); i++) {
-
-        // Get the corresponding coordinates in the canvas
-        canvas_x = i % canvas->get_width();
-        canvas_y = i / canvas->get_width();
-
-        // Only draw over pixels in the location of the view
-        if (canvas_x >= x && canvas_x < x + width) {
-            if (canvas_y >= y && canvas_y < y + height) {
-
-                // Filter out the borders and draw the corresponding pixels
-                if (canvas_x - x < border_width || x + width - canvas_x <= border_width) {
-                    ss << border_color << border_style << "\033[0m";
-                }
-                else if (canvas_y - y < border_width || y + height - canvas_y <= border_width)
-                    ss << border_color << border_style << "\033[0m";
-                else {
-                    // If not a border pixel, draw a body pixel
-                    ss << background_color << style << "\033[0m";
-                }
-
-                // Draw the pixel on the canvas
-                canvas->set_pixel(i, ss.str());
-                ss.str("");
-                ss.clear();
-            }
-        }
+    // Filter out the borders and draw the corresponding pixels
+    if (canvas_x - x < border_width || x + width - canvas_x <= border_width) {
+        ss << border_color << border_style << "\033[0m";
     }
+    else if (canvas_y - y < border_width || y + height - canvas_y <= border_width)
+        ss << border_color << border_style << "\033[0m";
+    else {
+        // If not a border pixel, draw a body pixel
+        ss << background_color << style << "\033[0m";
+    }
+
+    return ss.str();
+}
+
+int View::get_x()
+{
+    return x;
+}
+
+int View::get_y()
+{
+    return y;
 }

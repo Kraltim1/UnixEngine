@@ -1,49 +1,28 @@
-#include "Ellipse.h"
-#include <cmath>
 
-Ellipse::Ellipse() {
-	style = '#';
-}
+#include "ellipse.h"
 
-Ellipse::~Ellipse() {
+Ellipse::Ellipse() : View() {}
 
-}
+Ellipse::~Ellipse() {}
 
-bool Ellipse::checkFunction(int x,int y) {
-	if (pow(x,2)/pow(width,2)+pow(y,2)/pow(height,2) <= 1) return 1;
-	return 0;
-}
-
-void Ellipse::add_to(Canvas *canvas)
+string Ellipse::draw(int canvas_x, int canvas_y)
 {
-    int canvas_x;
-    int canvas_y;
     stringstream ss;
 
-    // For loop which cycles through all of the pixels in the canvas
-    for (int i = 0; i < canvas->get_width() * canvas->get_height(); i++) {
+    // Establish ellipse center
+    float x0 = x + width / 2;
+    float y0 = y + height / 2;
 
-        // Get the corresponding coordinates in the canvas
-        canvas_x = i % canvas->get_width();
-        canvas_y = i / canvas->get_width();
+    // Ellipse variables
+    float border = height > width ? height : width;
+    float max = pow(1 - (border_width * 2) / border, 2);
+    float distance = pow(canvas_x - x0, 2) / pow(width / 2, 2) + pow(canvas_y - y0, 2) / pow(height / 2, 2);
 
-        // Only draw over pixels in the location of the view
-        if (canvas_x >= x && canvas_x < x + width) {
-            if (canvas_y >= y && canvas_y < y + height) {
+    // Check if point is within the bounds of the ellipse
+    if (distance <= max)
+        ss << background_color << style << "\033[0m";
+    else if (distance <= 1)
+        ss << border_color << border_style << "\033[0m";
 
-                // Draw the pixels on the curve
-                if (checkFunction(canvas_x,canvas_y)) {
-                    ss << background_color << style << "\033[0m";
-                }
-                else {
-                	ss << canvas->get_pixel(i);
-                }
-
-                // Draw the pixel on the canvas
-                canvas->set_pixel(i, ss.str());
-                ss.str("");
-                ss.clear();
-            }
-        }
-    }
+    return ss.str();
 }

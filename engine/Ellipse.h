@@ -1,15 +1,21 @@
-#ifndef ENGINE_ELLIPSE_H_
-#define ENGINE_ELLIPSE_H_
+
+#ifndef ELLIPSE_H
+#define ELLIPSE_H
 
 #include "view.h"
 
-class Ellipse: public View {
-public:
-	Ellipse();
-	bool checkFunction(int x,int y);
-	void add_to(Canvas *canvas);
+#include <cmath>
 
-	virtual ~Ellipse();
+class Ellipse: public View
+{
+public:
+
+    // Lifeycle
+	Ellipse();
+    ~Ellipse();
+    
+    // Functions
+    string draw(int canvas_x, int canvas_y);
 };
 
-#endif /* ENGINE_ELLIPSE_H_ */
+#endif

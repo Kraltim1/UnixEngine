@@ -22,10 +22,9 @@ public:
     void set_background_color(string color);
     void set_pixel(int pixel, string value);
 
-    string get_pixel(int pixel);
-
     int get_width();
     int get_height();
+    string get_pixel(int pixel);
 
     void pixelate();
     void draw();

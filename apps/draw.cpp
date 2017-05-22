@@ -1,12 +1,9 @@
 
 #include "../engine/engine.h"
 
-#include <iostream>
 #include <algorithm>
 #include <sys/ioctl.h>
 #include <unistd.h>
-#include <thread>
-#include <time.h>
 
 View *view;
 
@@ -83,6 +80,8 @@ void create_object(string type)
 {
     if (!type.compare("View"))
         view = new View();
+    else if (!type.compare("Ellipse"))
+        view = new Ellipse();
 }
 
 // Function called when command is written in the console
@@ -105,19 +104,8 @@ void command_written(string command)
 // Function called before the next frame is rendered
 void render_frame(Canvas *canvas)
 {
-
-//
-//	Ellipse *test = new Ellipse();
-//	test->set_width(10);
-//	test->set_height(10);
-//	test->set_x(12);
-//	test->set_y(12);
-//	test->set_background_color("red");
-//	test->add_to(canvas);
-
-
     if (view) {
-        view->add_to(canvas);
+        Draw::draw(canvas, view);
         delete view;
         view = 0;
     }
@@ -125,11 +113,16 @@ void render_frame(Canvas *canvas)
 
 int main()
 {
-	struct winsize size;
-	ioctl(STDOUT_FILENO,TIOCGWINSZ,&size);
+    // Get window dimensions
+    struct winsize size;
+	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+
+    // Start UnixEngine
     UnixEngine *engine = new UnixEngine();
-    engine->set_canvas(size.ws_col, size.ws_row - engine->getCommandHistory());
+    engine->set_canvas(size.ws_col, size.ws_row - 12);
     engine->start(render_frame, command_written);
+
+    // Dealloc
     delete engine;
     return 0;
 }

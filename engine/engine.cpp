@@ -8,7 +8,7 @@ UnixEngine::UnixEngine()
 {
     // Alloc memory on startup
     canvas = new Canvas();
-    commands = new string[commandHistory];
+    commands = new string[10];
     n = 0;
 }
 
@@ -53,17 +53,17 @@ void UnixEngine::set_canvas(int width, int height)
 void UnixEngine::add_command(string command, int n)
 {
     // Add command to list if less than 10
-    if (n < commandHistory) {
+    if (n < 10) {
         commands[n] = command;
     }
     else {
         // Bring commands forward in the list
-        for (int i = 0; i < commandHistory-1; i++) {
+        for (int i = 0; i < 9; i++) {
             commands[i] = commands[i + 1];
         }
 
         // Add command to the end of the list
-        commands[commandHistory-1] = command;
+        commands[9] = command;
     }
 }
 
@@ -84,6 +84,6 @@ void UnixEngine::render(string *command)
 
     // Add command to the list
     add_command(*command, n);
-    if (n < commandHistory)
+    if (n < 10)
         n++;
 }

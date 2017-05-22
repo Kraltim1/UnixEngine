@@ -9,8 +9,6 @@ using namespace std;
 *
 *   Subclasses
 *
-*   - Ellipse
-*
 *   - Text
 *
 *   - Table
@@ -22,12 +20,6 @@ using namespace std;
 *       - Triangle (angle or direction property)
 *
 *       - Pentagon
-*
-*       - etc
-*
-*   - Arrow
-*
-*   - Drawings
 *
 ***********/
 
@@ -42,11 +34,13 @@ public:
     // Functions
     void set_x(int m_x);
     void set_y(int m_y);
-    void set_position(int m_x, int m_y);
     void set_border_style(char m_border_style);
     void set_border_width(int m_border_width);
     void set_border_color(string color);
-    virtual void add_to(Canvas *canvas);
+    virtual string draw(int canvas_x, int canvas_y);
+
+    int get_x();
+    int get_y();
 
 protected:
 
