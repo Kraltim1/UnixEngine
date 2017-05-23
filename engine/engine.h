@@ -2,7 +2,7 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
-#include "ellipse.h"
+#include "Ellipse.h"
 
 #include "draw.h"
 
