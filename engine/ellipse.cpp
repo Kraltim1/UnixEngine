@@ -1,5 +1,5 @@
 
-#include "Ellipse.h"
+#include "ellipse.h"
 
 Ellipse::Ellipse() : View() {}
 

@@ -2,8 +2,8 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
-#include "Ellipse.h"
-#include "Text.h"
+#include "ellipse.h"
+#include "text.h"
 
 #include "draw.h"
 

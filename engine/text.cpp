@@ -1,9 +1,8 @@
-#include "Text.h"
+#include "text.h"
 
 Text::Text() : View() {
 	width = 0;
 	height = 0;
-	style = '';
 }
 
 Text::~Text() {
@@ -16,7 +15,7 @@ string Text::get_text() {
 
 string Text::draw(int canvas_x, int canvas_y) {
     stringstream ss;
-    int textStart = width/2+x-text.length()/2-1;
+    int textStart = width/2+x-text.length()/2;
 
     if (!width) width=text.length();
     if (!height) height=1;
