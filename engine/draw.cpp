@@ -1,4 +1,3 @@
-
 #include "draw.h"
 
 void Draw::draw(Canvas *canvas, View *view)
@@ -7,7 +6,7 @@ void Draw::draw(Canvas *canvas, View *view)
     int canvas_x;
     int canvas_y;
 
-    // For loop which cicles through all of the pixels in the canvas
+    // For loop which circles through all of the pixels in the canvas
     for (int i = 0; i < canvas->get_width() * canvas->get_height(); i++) {
 
         // Get the corresponding coordinates in the canvas
