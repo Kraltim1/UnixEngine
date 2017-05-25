@@ -3,6 +3,7 @@
 #define ENGINE_H
 
 #include "Ellipse.h"
+#include "Text.h"
 
 #include "draw.h"
 

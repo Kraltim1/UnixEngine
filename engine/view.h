@@ -37,6 +37,8 @@ public:
     void set_border_style(char m_border_style);
     void set_border_width(int m_border_width);
     void set_border_color(string color);
+    void set_text(string m_text);
+
     virtual string draw(int canvas_x, int canvas_y);
 
     int get_x();
@@ -55,6 +57,7 @@ protected:
     char border_style;
     int border_width;
     string border_color;
+    string text;
 };
 
 #endif
