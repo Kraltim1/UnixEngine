@@ -79,7 +79,7 @@ string View::draw(int canvas_x, int canvas_y)
 
 int View::get_x()
 {
-    return x;
+	return x;
 }
 
 int View::get_y()
