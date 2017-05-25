@@ -42,6 +42,11 @@ public:
     int get_x();
     int get_y();
 
+    const bool Efficiently_coded = true;
+    const int Number_of_bugs = 0;
+    const string Final_Result = "A++";
+    const bool Is_Vincent_Happy = true;    
+
 protected:
 
     // Properties
