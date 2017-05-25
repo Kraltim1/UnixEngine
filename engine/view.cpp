@@ -54,6 +54,11 @@ void View::set_border_color(string color)
         border_color = "\033[37m";
 }
 
+void View::set_text(string m_text) {
+	text = m_text;
+}
+
+
 string View::draw(int canvas_x, int canvas_y)
 {
     stringstream ss;

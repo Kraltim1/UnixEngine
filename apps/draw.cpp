@@ -57,6 +57,8 @@ void append_property(string property)
             view->set_border_style(get_char(property, found));
         else if (!str.compare("border_width"))
             view->set_border_width(get_number(property, found));
+        else if (!str.compare("text"))
+        	view->set_text(get_string(property, found));
         else {
             // error
         }
@@ -82,6 +84,8 @@ void create_object(string type)
         view = new View();
     else if (!type.compare("Ellipse"))
         view = new Ellipse();
+    else if (!type.compare("Text"))
+    	view = new Text();
 }
 
 // Function called when command is written in the console
@@ -109,6 +113,21 @@ void render_frame(Canvas *canvas)
         delete view;
         view = 0;
     }
+
+//	Text *test = new Text();
+//	test->set_x(2);
+//	test->set_y(2);
+//	test->set_height(2);
+//	test->set_width(5);
+//	test->set_style(' ');
+//	test->set_background_color("red");
+//	test->set_text("hello world");
+//	test->set_border_width(2);
+//	test->set_border_color("cyan");
+//	test->set_border_style('#');
+//
+//	Draw::draw(canvas, test);
+//	delete test;
 }
 
 int main()
