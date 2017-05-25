@@ -9,7 +9,6 @@ public:
 	virtual ~Text();
 
 	// Functions
-	void set_text(string input);
 	string get_text();
 	string draw(int canvas_x, int canvas_y);
 };

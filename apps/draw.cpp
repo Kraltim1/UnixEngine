@@ -113,21 +113,6 @@ void render_frame(Canvas *canvas)
         delete view;
         view = 0;
     }
-
-//	Text *test = new Text();
-//	test->set_x(2);
-//	test->set_y(2);
-//	test->set_height(2);
-//	test->set_width(5);
-//	test->set_style(' ');
-//	test->set_background_color("red");
-//	test->set_text("hello world");
-//	test->set_border_width(2);
-//	test->set_border_color("cyan");
-//	test->set_border_style('#');
-//
-//	Draw::draw(canvas, test);
-//	delete test;
 }
 
 int main()
