@@ -7,6 +7,11 @@ class Triangle: public Polygon {
 public:
 	Triangle();
 	virtual ~Triangle();
+
+	void set_points();
+	int get_point(int i);
+
+	int * points = new int[8]();
 };
 
 #endif /* ENGINE_TRIANGLE_H_ */

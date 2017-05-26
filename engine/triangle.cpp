@@ -8,25 +8,15 @@ Triangle::~Triangle() {
 }
 
 
+void Triangle::set_points() {
+// sets defines the points given
+	int p[8] = {x+width/2,y, x,y+height, x+width,y+height, x+width/2,y};
+	for (int i = 0; i < 8; i++) {
+		*(points+i) = p[i];
+	}
+}
 
-
-
-
-//
-//string Triangle::draw(int canvas_x, int canvas_y)
-//{
-//    stringstream ss;
-//
-//    if (canvas_x >= x+width/2*(1+(canvas_y-y)/(-height)) && canvas_x <= x+width/2*(1-(canvas_y-y)/(-height))) {
-//    	if (canvas_y >= y && canvas_y <= y+height) {
-//    		cout << "x lower bound   = " << x+width/2*(1+(canvas_y-y)/(-height)) << endl;
-//    		cout << "x greater bound = " << x+width/2*(1-(canvas_y-y)/(-height)) << endl;
-//			// If not a border pixel, draw a body pixel
-////			ss << background_color << style << "\033[0m";
-//    	}
-//    }
-//
-//    return ss.str();
-//}
-
+int Triangle::get_point(int i) {
+	return *(points+i);
+}
 
