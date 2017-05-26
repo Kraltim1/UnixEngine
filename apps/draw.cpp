@@ -86,6 +86,8 @@ void create_object(string type)
         view = new Ellipse();
     else if (!type.compare("Text"))
     	view = new Text();
+    else if (!type.compare("Triangle"))
+        	view = new Triangle();
 }
 
 // Function called when command is written in the console
@@ -113,6 +115,18 @@ void render_frame(Canvas *canvas)
         delete view;
         view = 0;
     }
+
+//    Triangle *test = new Triangle();
+//    test->set_x(0);
+//    test->set_y(0);
+//    test->set_background_color("blue");
+//    test->set_style('#');
+//    test->set_height(50);
+//    test->set_width(100);
+//
+//    Draw::draw(canvas,test);
+//    delete test;
+
 }
 
 int main()
