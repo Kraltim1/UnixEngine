@@ -48,9 +48,9 @@ string Polygon::draw(int canvas_x, int canvas_y) {
     if (isOutside(sides, canvas_x, canvas_y)){
     	ss << border_color << border_style << "\033[0m";
     }
-    else if (isInside(sides, canvas_x, canvas_y)) {
-    // fill in polygon
-        ss << background_color << style << "\033[0m";
+    // else if (isInside(sides, canvas_x, canvas_y)) {
+    // // fill in polygon
+    //     ss << background_color << style << "\033[0m";
     }
 
     return ss.str();
