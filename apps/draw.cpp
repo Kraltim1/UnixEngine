@@ -110,22 +110,25 @@ void command_written(string command)
 // Function called before the next frame is rendered
 void render_frame(Canvas *canvas)
 {
-    if (view) {
-        Draw::draw(canvas, view);
-        delete view;
-        view = 0;
-    }
+    // if (view) {
+    //     Draw::draw(canvas, view);
+    //     delete view;
+    //     view = 0;
+    // }
 
-//    Triangle *test = new Triangle();
-//    test->set_x(0);
-//    test->set_y(0);
-//    test->set_background_color("blue");
-//    test->set_style('#');
-//    test->set_height(50);
-//    test->set_width(100);
-//
-//    Draw::draw(canvas,test);
-//    delete test;
+   Triangle *test = new Triangle();
+   test->set_x(0);
+   test->set_y(0);
+   test->set_background_color("blue");
+   test->set_style('#');
+   test->set_height(30);
+   test->set_width(80);
+   test->set_border_width(3);
+   test->set_border_style('%');
+   test->set_border_color("red");
+
+   Draw::draw(canvas,test);
+   delete test;
 
 }
 

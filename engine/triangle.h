@@ -11,7 +11,7 @@ public:
 	void set_points();
 	int get_point(int i);
 
-	int * points = new int[8]();
+	int * points = new int[16]();
 };
 
 #endif /* ENGINE_TRIANGLE_H_ */
